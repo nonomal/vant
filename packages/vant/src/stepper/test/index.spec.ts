@@ -113,7 +113,7 @@ test('should limit max value when using max prop', async () => {
 });
 
 test('should update value after long pressing', async () => {
-  vi.useFakeTimers();
+  rs.useFakeTimers();
   const wrapper = mount(Stepper, {
     props: {
       modelValue: 1,
@@ -128,14 +128,14 @@ test('should update value after long pressing', async () => {
   expect(wrapper.emitted('update:modelValue')![0]).toEqual([2]);
 
   await plus.trigger('touchstart');
-  await vi.advanceTimersByTimeAsync(LONG_PRESS_START_TIME + 500);
+  await rs.advanceTimersByTimeAsync(LONG_PRESS_START_TIME + 500);
   await plus.trigger('touchend');
   expect(wrapper.emitted('update:modelValue')).toEqual([[2], [3], [4], [5]]);
-  vi.useRealTimers();
+  rs.useRealTimers();
 });
 
 test('should allow to disable long press', async () => {
-  vi.useFakeTimers();
+  rs.useFakeTimers();
   const wrapper = mount(Stepper, {
     props: {
       longPress: false,
@@ -145,11 +145,11 @@ test('should allow to disable long press', async () => {
 
   const plus = wrapper.find('.van-stepper__plus');
   await plus.trigger('touchstart');
-  await vi.advanceTimersByTimeAsync(LONG_PRESS_START_TIME + 500);
+  await rs.advanceTimersByTimeAsync(LONG_PRESS_START_TIME + 500);
   await plus.trigger('touchend');
 
   expect(wrapper.emitted('update:modelValue')).toBeFalsy();
-  vi.useRealTimers();
+  rs.useRealTimers();
 });
 
 test('should filter invalid value during user input', async () => {
@@ -454,4 +454,31 @@ test('should allow input be to empty when using allow-empty prop', async () => {
   await wrapper.setProps({ allowEmpty: false });
   await input.trigger('blur');
   expect(wrapper.emitted('update:modelValue')![0]).toEqual([1]);
+});
+
+test('scientific number', async () => {
+  const wrapper = mount(Stepper, {
+    props: {
+      min: 0,
+      modelValue: 9.9e-7,
+    },
+  });
+
+  const input = wrapper.find('input');
+
+  expect(input.element.value).toEqual('9.9e-7');
+});
+
+test('scientific number with decimal length', async () => {
+  const wrapper = mount(Stepper, {
+    props: {
+      min: 0,
+      modelValue: 9.9e-7,
+      decimalLength: 8,
+    },
+  });
+
+  const input = wrapper.find('input');
+
+  expect(input.element.value).toEqual('0.00000099');
 });

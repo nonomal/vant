@@ -3,6 +3,7 @@ export default {
   tel: '電話番号',
   save: 'セーブ',
   clear: 'クリア',
+  undo: '元に戻す',
   cancel: 'キャンセル',
   confirm: '確認',
   delete: '削除',
@@ -43,8 +44,8 @@ export default {
     count: (count: number) => `${count}枚が利用可能`,
   },
   vanCouponList: {
-    exchange: '両替',
-    close: '使用禁止',
+    exchange: '交換',
+    close: '使用しない',
     enable: '利用可能',
     disabled: '利用できません',
     placeholder: '割引コードを入力してください',

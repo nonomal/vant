@@ -183,7 +183,7 @@ test('should autosize textarea field', async () => {
 });
 
 test('should allow autosize prop be be an object', async () => {
-  window.scrollTo = vi.fn();
+  window.scrollTo = rs.fn();
 
   const wrapper = mount(Field, {
     props: {
@@ -203,7 +203,7 @@ test('should allow autosize prop be be an object', async () => {
 
 test('should call input.focus when vm.focus is called', () => {
   const wrapper = mount(Field);
-  const onFocus = vi.fn();
+  const onFocus = rs.fn();
   wrapper.find('input').element.focus = onFocus;
 
   wrapper.vm.focus();
@@ -212,7 +212,7 @@ test('should call input.focus when vm.focus is called', () => {
 
 test('should call input.blur when vm.blur is called', () => {
   const wrapper = mount(Field);
-  const onBlur = vi.fn();
+  const onBlur = rs.fn();
   wrapper.find('input').element.blur = onBlur;
 
   wrapper.vm.blur();
@@ -357,6 +357,32 @@ test('should change arrow direction when using arrow-direction prop', () => {
   expect(wrapper.find('.van-icon-arrow-up').exists()).toBeTruthy();
 });
 
+test('should not trigger click event when disabled with is-link', () => {
+  const onClick = rs.fn();
+  const wrapper = mount(Field, {
+    props: {
+      disabled: true,
+      isLink: true,
+      onClick,
+    },
+  });
+
+  wrapper.trigger('click');
+  expect(onClick).not.toHaveBeenCalled();
+});
+
+test('should not show arrow icon when disabled with is-link', () => {
+  const wrapper = mount(Field, {
+    props: {
+      disabled: true,
+      isLink: true,
+    },
+  });
+
+  expect(wrapper.find('.van-icon-arrow').exists()).toBeFalsy();
+  expect(wrapper.find('.van-cell--clickable').exists()).toBeFalsy();
+});
+
 test('should allow to format value with formatter prop', () => {
   const wrapper = mount(Field, {
     props: {
@@ -458,7 +484,7 @@ test('should blur search input after pressing enter', async () => {
     },
   });
 
-  const onBlur = vi.fn();
+  const onBlur = rs.fn();
   wrapper.find('input').element.blur = onBlur;
   await wrapper.find('input').trigger('keypress.enter');
   expect(onBlur).toHaveBeenCalledTimes(1);
@@ -607,4 +633,59 @@ test("should not be set label's for attribute when using input slot", async () =
   expect(
     wrapper.find('.van-field__label label').attributes('for'),
   ).toBeUndefined();
+});
+
+test('should update selection range correctly when inputting text into string with emoji', async () => {
+  const wrapper = mount(Field, {
+    props: {
+      maxlength: 2,
+      modelValue: '😀😀',
+    },
+  });
+
+  const input = wrapper.find('input');
+  await input.trigger('focus');
+
+  input.element.value = '😀😀😀';
+  input.element.selectionEnd = 6;
+  input.trigger('input');
+
+  expect(input.element.selectionEnd).toEqual(4);
+});
+
+test('should update selection range correctly when using formatter with emoji', async () => {
+  const wrapper = mount(Field, {
+    props: {
+      modelValue: '',
+      formatter: (val) => val.replace('1', '😀😀'),
+    },
+  });
+
+  const input = wrapper.find('input');
+  await input.trigger('focus');
+
+  input.element.value = '1';
+  input.element.selectionEnd = 1;
+  input.trigger('input');
+
+  expect(input.element.selectionEnd).toEqual(4);
+});
+
+test('should limit maxlength correctly when pasting multiple emojis', async () => {
+  const wrapper = mount(Field, {
+    props: {
+      maxlength: 4,
+      modelValue: '',
+    },
+  });
+
+  const input = wrapper.find('input');
+  await input.trigger('focus');
+
+  input.element.value = '1😀😀😀😀';
+  input.element.selectionEnd = 9;
+  input.trigger('input');
+
+  expect(wrapper.emitted('update:modelValue')[0][0]).toEqual('1😀😀😀');
+  expect(input.element.value).toEqual('1😀😀😀');
 });

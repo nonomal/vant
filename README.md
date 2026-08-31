@@ -22,6 +22,10 @@
   ·
   &nbsp;
   <a href="./README.zh-CN.md">中文介绍</a>
+  &nbsp;
+  ·
+  &nbsp;
+  <a href="./README.ja-JP.md">日本語</a>
 </p>
 
 ---
@@ -122,7 +126,6 @@ Vant 3/4 supports modern browsers and Chrome >= 51、iOS >= 10.0 (same as Vue 3)
 | Project | Description |
 | --- | --- |
 | [3lang3/react-vant](https://github.com/3lang3/react-vant) | React mobile UI Components based on Vant |
-| [vant-aliapp](https://github.com/ant-move/Vant-Aliapp) | Alipay MiniProgram UI |
 | [vant-theme](https://github.com/Aisen60/vant-theme) | Online theme preview built on Vant UI |
 | [@antmjs/vantui](https://github.com/antmjs/vantui) | Mobile UI Components based on Vant, supporting Taro and React |
 | [Taroify](https://github.com/mallfoundry/taroify) | Taroify is the Taro version of Vant |
@@ -133,7 +136,6 @@ Vant 3/4 supports modern browsers and Chrome >= 51、iOS >= 10.0 (same as Vue 3)
 | [vscode-common-intellisense](https://github.com/Simon-He95/vscode-common-intellisense) | A VS Code extension that provides better intellisense to Vant developers |
 | [nuxt-vant-mobile](https://github.com/vue-zone/nuxt-vant-mobile) | Nuxt _⁴_ project template based on Vant, out of the box |
 | [mobvue](https://github.com/un-pany/mobvue) | A well-crafted mobile web app template |
-| [novlan1/press-ui](https://github.com/novlan1/press-ui) | Uni APP mobile UI Components based on Vant |
 
 ## Links
 
@@ -159,14 +161,6 @@ Core contributors of Vant and Vant Weapp:
 | [![Lindysen](https://avatars.githubusercontent.com/u/33708359?s=80&v=4)](https://github.com/Lindysen/) | [![JakeLaoyu](https://avatars.githubusercontent.com/u/16181940?s=80&v=4)](https://github.com/JakeLaoyu/) | [![landluck](https://avatars.githubusercontent.com/u/27060081?s=80&v=4)](https://github.com/landluck/) | [![wjw-gavin](https://avatars.githubusercontent.com/u/19986739?s=80&v=4)](https://github.com/wjw-gavin/) | [![inottn](https://avatars.githubusercontent.com/u/18509404?s=80&v=4)](https://github.com/inottn/) | [![zhousg](https://avatars.githubusercontent.com/u/15833290?s=80&v=4)](https://github.com/zhousg/) |
 | :-: | :-: | :-: | :-: | :-: | :-: |
 | [Lindysen](https://github.com/Lindysen/) | [JakeLaoyu](https://github.com/JakeLaoyu/) | [landluck](https://github.com/landluck/) | [wjw-gavin](https://github.com/wjw-gavin/) | [inottn](https://github.com/inottn/) | [zhousg](https://github.com/zhousg/) |
-
-## All Contributors
-
-Thanks to the following friends for their contributions to Vant:
-
-<a href="https://github.com/vant-ui/vant/graphs/contributors">
-  <img src="https://opencollective.com/vant/contributors.svg?width=890&button=false" alt="contributors">
-</a>
 
 ## Contribution Guide
 

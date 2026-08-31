@@ -352,7 +352,7 @@ Use `label-align` prop to align the input value, can be set to `center`, `right`
 | rules | Form validation rules | _FieldRule[]_ | - |
 | autocomplete | HTML native attribute, see [MDN - autocomplete](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) | _string_ | - |
 | autocapitalize `v4.6.2` | HTML native attribute, see [MDN - autocapitalize](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autocapitalize)<br> | _string_ | - |
-| enterkeyhint | HTML native attribute, see [MDN - enterkeyhint](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/enterkeyhint)<br> | _string_ | - |
+| enterkeyhint | HTML native attribute, see [MDN - enterkeyhint](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/enterkeyhint)<br> | _FieldEnterKeyHint_ | - |
 | spellcheck `v4.6.2` | HTML native attribute, see [MDN - spellcheck](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/spellcheck)<br> | _boolean_ | - |
 | autocorrect `v4.6.2` | HTML native attribute, Safari only, see [MDN - autocorrect](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#autocorrect)<br> | _string_ | - |
 | inputmode `v4.9.9` | HTML native attribute, see [MDN - inputmode](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode) | _string_ | Set automatically according to the `type` prop |
@@ -377,10 +377,11 @@ Use `label-align` prop to align the input value, can be set to `center`, `right`
 
 Use [ref](https://vuejs.org/guide/essentials/template-refs.html) to get Field instance and call instance methods.
 
-| Name  | Description         | Attribute | Return value |
-| ----- | ------------------- | --------- | ------------ |
-| focus | Trigger input focus | -         | -            |
-| blur  | Trigger input blur  | -         | -            |
+| Name               | Description          | Attribute | Return value |
+| ------------------ | -------------------- | --------- | ------------ |
+| focus              | Trigger input focus  | -         | -            |
+| blur               | Trigger input blur   | -         | -            |
+| adjustTextareaSize | adjust textarea size | -         | -            |
 
 ### Types
 
